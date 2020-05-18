@@ -12,7 +12,7 @@ import {RouterModule, Routes} from '@angular/router';
 import { IndexComponent } from './index/index.component';
 import { SigninComponent } from './signin/signin.component';
 import { RegisterComponent } from './register/register.component';
-import {ReactiveFormsModule} from '@angular/forms';
+import {FormsModule, ReactiveFormsModule} from '@angular/forms';
 const roster: Routes = [
   {
     path: '',
@@ -38,11 +38,12 @@ const roster: Routes = [
     FooterComponent,
     IndexComponent,
     SigninComponent,
-    RegisterComponent
+    RegisterComponent,
   ],
   imports: [
     BrowserModule,
     ReactiveFormsModule,
+    FormsModule,
     RouterModule.forRoot(roster)
   ],
   providers: [],

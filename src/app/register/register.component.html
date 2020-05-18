@@ -2,38 +2,46 @@
   <div class="card-header">
     <h1 class="alert-dark" style="color: red" >Đăng Ký</h1>
   </div>
-<form>
+<form [formGroup]="registerFrom" (ngSubmit)="onSubmit()">
   <div class="form-group">
     <label for="exampleInputEmail1" style="color: red">Email address</label>
-    <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp">
+    <input name="email" formControlName="email" type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp">
     <small id="emailHelp" class="form-text text-muted" style="color: red">Không chia sẻ email của bạn với bất cứ ai.</small>
+    <small id="emailHelp1" *ngIf="registerFrom.get('email').errors && registerFrom.get('email').touched" class="form-text text-muted">Sai Định dạng email.</small>
   </div>
   <div class="form-group">
     <label for="username" style="color: red">Tài Khoản</label>
-    <input type="email" class="form-control" id="username" aria-describedby="emailHelp">
-    <small id="userHelp" class="form-text text-muted" style="color: red">Tài khoản của ít nhất 6 kí tự và nhiều nhất 45.</small>
+    <input name="userName" formControlName="userName" type="email" class="form-control" id="username" aria-describedby="emailHelp">
+    <small id="userHelp" class="form-text text-muted" style="color: red"
+    *ngIf="registerFrom.get('userName')&& registerFrom.get('userName').touched">Tài khoản  ít nhất 6 kí tự và nhiều nhất 45.</small>
   </div>
 
   <div class="form-group">
     <label for="exampleInputPassword1" style="color: red">Password</label>
-    <input type="password" class="form-control" id="exampleInputPassword1">
+    <input name="password" formControlName="password" type="password" class="form-control" id="exampleInputPassword1">
+    <small id="password" class="form-text text-muted" style="color: red"
+           *ngIf="registerFrom.get('password')&& registerFrom.get('password').touched">Mật Khẩu  ít nhất 6 kí tự và nhiều nhất 45.</small>
   </div>
-
+  <fieldset formControlName="pwGroup">
   <div class="form-group">
     <label for="repass" style="color: red">Nhập Lại Password</label>
-    <input type="password" class="form-control" id="repass">
+    <input name="repass" formControlName="repass" type="password" class="form-control" id="repass">
+    <small id="repass1" style="color: red" *ngIf="registerFrom.hasError('passwordnotmatch',['pwGroup'])
+      && registerFrom.get('pwGroup').touched" class="form-text text-muted">Nhập lại mật khẩu không đúng.</small>
   </div>
-
+  </fieldset>
   <div class="form-group">
     <label for="phone" style="color: red">Số Điện Thoại</label>
-    <input type="text" class="form-control" id="phone">
+    <input name="phone" formControlName="phone" type="text" class="form-control" id="phone">
+    <small id="phone2" style="color: red" *ngIf="registerFrom.get('phone').errors && registerFrom.get('phone').touched" class="form-text text-muted">Sai định dạng số điện thoại.</small>
+
   </div>
 
   <div class="form-group form-check">
     <input type="checkbox" class="form-check-input" id="exampleCheck1">
     <label class="form-check-label" for="exampleCheck1" style="color: red">Check me out</label>
   </div>
-  <button type="submit" class="btn btn-primary">Submit</button>
+  <button type="submit"  class="btn btn-primary">Submit</button>
 <br>
   <div class="form-group form-check">
     <a routerLink="/signin"><span style="color: red">Nếu Bạn Đã Có Tài Khoản, Hãy Đăng Nhập!</span></a>
