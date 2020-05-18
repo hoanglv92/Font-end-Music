@@ -3,12 +3,30 @@ import { NgModule } from '@angular/core';
 
 import { AppComponent } from './app.component';
 import { NavBarComponent } from './nav-bar/nav-bar.component';
-import { SlideComponent } from './slide/slide.component';
-import { ShowMusicHotComponent } from './show-music-hot/show-music-hot.component';
-import { AlbumHotComponent } from './album-hot/album-hot.component';
-import { MusicNewComponent } from './music-new/music-new.component';
+import { SlideComponent } from './index/slide/slide.component';
+import { ShowMusicHotComponent } from './index/show-music-hot/show-music-hot.component';
+import { AlbumHotComponent } from './index/album-hot/album-hot.component';
+import { MusicNewComponent } from './index/music-new/music-new.component';
 import { FooterComponent } from './footer/footer.component';
-
+import {RouterModule, Routes} from '@angular/router';
+import { IndexComponent } from './index/index.component';
+import { SigninComponent } from './signin/signin.component';
+import { RegisterComponent } from './register/register.component';
+import {ReactiveFormsModule} from '@angular/forms';
+const roster: Routes = [
+  {
+    path: '',
+    component : IndexComponent
+  },
+  {
+    path: 'register',
+    component : RegisterComponent
+  },
+  {
+    path: 'signin',
+    component : SigninComponent
+  }
+];
 @NgModule({
   declarations: [
     AppComponent,
@@ -17,10 +35,15 @@ import { FooterComponent } from './footer/footer.component';
     ShowMusicHotComponent,
     AlbumHotComponent,
     MusicNewComponent,
-    FooterComponent
+    FooterComponent,
+    IndexComponent,
+    SigninComponent,
+    RegisterComponent
   ],
   imports: [
-    BrowserModule
+    BrowserModule,
+    ReactiveFormsModule,
+    RouterModule.forRoot(roster)
   ],
   providers: [],
   bootstrap: [AppComponent]
