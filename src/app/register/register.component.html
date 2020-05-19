@@ -1,52 +1,49 @@
+
 <div class="container">
-  <div class="card-header">
-    <h1 class="alert-dark" style="color: red" >Đăng Ký</h1>
+  <div class="signup-content">
+    <div class="signup-form">
+      <h2 class="form-title">Sign up</h2>
+      <form method="POST" class="register-form" id="register-form" [formGroup]="registerFrom"
+            (ngSubmit)="onSubmit(registerFrom)">
+        <div class="form-group">
+          <label for="name"><i class="zmdi zmdi-account material-icons-name"></i></label>
+          <input type="text" name="username" id="name" placeholder="userName" formControlName="userName">
+          <small id="userName" class="form-text text-muted" style="color: red"
+            *ngIf="registerFrom.get('userName') && registerFrom.get('userName').touched">Tài khoản ít nhất 6 kí tự và
+            nhiều nhất 45.</small>
+        </div>
+        <div class="form-group">
+          <label for="email"><i class="zmdi zmdi-email"></i></label>
+          <input type="email" name="email" id="email" placeholder="Your Email" formControlName="email">
+          <small id="emailHelp" class="form-text text-muted" style="color: red"
+                 *ngIf="registerFrom.get('email') && registerFrom.get('email').touched">Email không đúng địn dạng (abcd12@gmail.com).</small>
+        </div>
+        <div class="form-group">
+          <label for="pass"><i class="zmdi zmdi-lock"></i></label>
+          <input formControlName="password" type="password" name="password" id="pass" placeholder="Password">
+          <small id="passHelp" class="form-text text-muted" style="color: red"
+                 *ngIf="registerFrom.get('password') && registerFrom.get('password').touched">Mật Khẩu ít nhất 6 kí tự và
+            nhiều nhất 45.</small>
+        </div>
+        <div class="form-group">
+          <label for="re_pass"><i class="zmdi zmdi-lock-outline"></i></label>
+          <input type="password" formControlName="repass" name="repass" id="re_pass" placeholder="Repeat your password">
+          <small id="userHelp" class="form-text text-muted" style="color: red"
+                 *ngIf="registerFrom.get('repass') && registerFrom.get('repass').touched"> Không được để trống, Nhập lại mật khẩu phải giống với mật khẩu.</small>
+        </div>
+        <div class="form-group">
+          <input type="checkbox" name="agree-term" id="agree-term" class="agree-term">
+          <label for="agree-term" class="label-agree-term"><span><span></span></span>I agree all statements in <a
+            href="#" class="term-service">Terms of service</a></label>
+        </div>
+        <div class="form-group form-button">
+          <button type="submit" name="signup" id="signup" class="form-submit"  >Register</button>
+        </div>
+      </form>
+    </div>
+    <div class="signup-image">
+      <figure><img src="assets/images/signup-image.jpg" alt="sing up image"></figure>
+      <a routerLink="/signin" class="signup-image-link">Đã có tài khoản hãy đăng nhập.</a>
+    </div>
   </div>
-<form [formGroup]="registerFrom" (ngSubmit)="onSubmit()">
-  <div class="form-group">
-    <label for="exampleInputEmail1" style="color: red">Email address</label>
-    <input name="email" formControlName="email" type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp">
-    <small id="emailHelp" class="form-text text-muted" style="color: red">Không chia sẻ email của bạn với bất cứ ai.</small>
-    <small id="emailHelp1" *ngIf="registerFrom.get('email').errors && registerFrom.get('email').touched" class="form-text text-muted">Sai Định dạng email.</small>
-  </div>
-  <div class="form-group">
-    <label for="username" style="color: red">Tài Khoản</label>
-    <input name="userName" formControlName="userName" type="email" class="form-control" id="username" aria-describedby="emailHelp">
-    <small id="userHelp" class="form-text text-muted" style="color: red"
-    *ngIf="registerFrom.get('userName')&& registerFrom.get('userName').touched">Tài khoản  ít nhất 6 kí tự và nhiều nhất 45.</small>
-  </div>
-
-  <div class="form-group">
-    <label for="exampleInputPassword1" style="color: red">Password</label>
-    <input name="password" formControlName="password" type="password" class="form-control" id="exampleInputPassword1">
-    <small id="password" class="form-text text-muted" style="color: red"
-           *ngIf="registerFrom.get('password')&& registerFrom.get('password').touched">Mật Khẩu  ít nhất 6 kí tự và nhiều nhất 45.</small>
-  </div>
-  <fieldset formControlName="pwGroup">
-  <div class="form-group">
-    <label for="repass" style="color: red">Nhập Lại Password</label>
-    <input name="repass" formControlName="repass" type="password" class="form-control" id="repass">
-    <small id="repass1" style="color: red" *ngIf="registerFrom.hasError('passwordnotmatch',['pwGroup'])
-      && registerFrom.get('pwGroup').touched" class="form-text text-muted">Nhập lại mật khẩu không đúng.</small>
-  </div>
-  </fieldset>
-  <div class="form-group">
-    <label for="phone" style="color: red">Số Điện Thoại</label>
-    <input name="phone" formControlName="phone" type="text" class="form-control" id="phone">
-    <small id="phone2" style="color: red" *ngIf="registerFrom.get('phone').errors && registerFrom.get('phone').touched" class="form-text text-muted">Sai định dạng số điện thoại.</small>
-
-  </div>
-
-  <div class="form-group form-check">
-    <input type="checkbox" class="form-check-input" id="exampleCheck1">
-    <label class="form-check-label" for="exampleCheck1" style="color: red">Check me out</label>
-  </div>
-  <button type="submit"  class="btn btn-primary">Submit</button>
-<br>
-  <div class="form-group form-check">
-    <a routerLink="/signin"><span style="color: red">Nếu Bạn Đã Có Tài Khoản, Hãy Đăng Nhập!</span></a>
-  </div>
-
-</form>
-
 </div>
