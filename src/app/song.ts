@@ -3,10 +3,14 @@
   nameSong: string;
   infoSong: string;
   imageSong: string;
-  view: number;
-  dateSong: string;
-  likeSong: string;
-  listenSong: string;
-  downloadSong: string;
+  dateSong: Date;
+  likeSong: number;
+  listenSong: number;
+  downloadSong: number;
   commendSong?: string;
+  author: string;
+  link: string;
+  category: string;
+  idSinger: number;
+  idAlbum: number;
 }

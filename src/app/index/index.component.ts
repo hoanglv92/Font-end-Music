@@ -35,7 +35,7 @@ export class IndexComponent implements OnInit {
   }
   sortByView() {
     // @ts-ignore
-    this.hitSongs = this.songs.sort((a: Song['view'], b: Song['view']) =>  b - a);
+    this.hitSongs = this.songs.sort((a: Song['listenSong'], b: Song['listenSong']) =>  b - a);
   }
 
 }
