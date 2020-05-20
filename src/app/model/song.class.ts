@@ -1,13 +1,18 @@
-export class Book {
+export class Song {
 
-  id: number;
-  title: string;
-  author: string;
-  description: string;
+  idSong: number;
+  nameSong: string;
+  infoSong: string;
+  imageSong: string;
+  fileSong: string;
+  dateSong: string;
 
-  constructor(title: string, author: string, description: string) {
-    this.title = title;
-    this.author = author;
-    this.description = description;
+
+  constructor(nameSong: string, infoSong: string, imageSong: string, fileSong: string, dateSong: string) {
+    this.nameSong = nameSong;
+    this.infoSong = infoSong;
+    this.imageSong = imageSong;
+    this.fileSong = fileSong;
+    this.dateSong = dateSong;
   }
 }

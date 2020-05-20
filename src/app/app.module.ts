@@ -13,6 +13,9 @@ import { IndexComponent } from './index/index.component';
 import { SigninComponent } from './signin/signin.component';
 import { RegisterComponent } from './register/register.component';
 import {FormsModule, ReactiveFormsModule} from '@angular/forms';
+import { SongListComponent } from './components/song/song-list/song-list.component';
+import { SongCreateComponent } from './components/song/song-create/song-create.component';
+import {HttpClientModule} from '@angular/common/http';
 const roster: Routes = [
   {
     path: '',
@@ -25,6 +28,14 @@ const roster: Routes = [
   {
     path: 'signin',
     component : SigninComponent
+  },
+  {
+    path: 'song-list',
+    component : SongListComponent
+  },
+  {
+    path: 'song-create',
+    component : SongCreateComponent
   }
 ];
 @NgModule({
@@ -39,11 +50,14 @@ const roster: Routes = [
     IndexComponent,
     SigninComponent,
     RegisterComponent,
+    SongListComponent,
+    SongCreateComponent,
   ],
   imports: [
     BrowserModule,
     ReactiveFormsModule,
     FormsModule,
+    HttpClientModule,
     RouterModule.forRoot(roster)
   ],
   providers: [],
