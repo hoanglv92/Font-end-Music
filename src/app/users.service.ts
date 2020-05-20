@@ -7,13 +7,13 @@ import {Users} from './users';
   providedIn: 'root'
 })
 export class UsersService {
+  url = 'http://localhost:8080/';
 
   constructor(private httpClient: HttpClient) {
   }
 
-  // @ts-ignore
   saveUser(user: Users) {
-    this.httpClient.post('http://localhost:8080/api/register', user).subscribe();
+    this.httpClient.post(this.url + 'api/register', user).subscribe();
   }
 
 }
